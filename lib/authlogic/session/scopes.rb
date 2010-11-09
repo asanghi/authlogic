@@ -93,7 +93,7 @@ module Authlogic
           def search_for_record(*args)
             where = {}
             where = (scope[:where].instance_of?(ActiveRecord::Relation)) ? scope[:where] : klass.send(:where, *scope[:where]) if scope[:where]
-            klass.send(:with_scope, :find => where) does
+            klass.send(:with_scope, :find => where) do
               klass.send(*args)
             end
           end
